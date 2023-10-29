@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lanchonete</title>
+</head>
+<body>
+    <h1>Lanchonete</h1>
+
+    <p>Lanche: <span id="lanche"></span></p>
+    <p>Acompanhamento: <span id="acompanhamento"></span></p>
+    <p>Bebida: <span id="bebida"></span></p>
+    <p>Valor total do pedido: <span id="total"></span></p>
+
+    <script>
+        let h = { X1: 1.38, X2: 2.31, X3: 2.81, X4: 3.21 };
+        let a = { Nuggets: 3.69, Fritas: 1.58 };
+        let b = { CocaCola: 1.48, Fanta: 2.58, Agua: 0.98 };
+
+        let pedidoLanche = "";
+        let pedidoAcompanhamento = "";
+        let pedidoBebida = "";
+        let valor = 0;
+
+        let lanche = Number(prompt("Escolha o lanche:\n [1] = X1 - R$1,38\n [2] = X2 - R$2,31\n [3] = X3 - R$2,81\n [4] = X4 - R$3,21\n"));
+
+        while (lanche > 4 || lanche < 1) {
+            alert("Digite um número válido");
+            lanche = Number(prompt("Escolha um lanche:\n [1] = X1 - R$1,38\n [2] = X2 - R$2,31\n [3] = X3 - R$2,81\n [4] = X4 - R$3,21\n"));
+        }
+
+        switch (lanche) {
+            case 1:
+                valor += h.X1;
+                pedidoLanche = "X1 - R$" + h.X1;
+                break;
+            case 2:
+                valor += h.X2;
+                pedidoLanche = "X2 - R$" + h.X2;
+                break;
+            case 3:
+                valor += h.X3;
+                pedidoLanche = "X3 - R$" + h.X3;
+                break;
+            case 4:
+                valor += h.X4;
+                pedidoLanche = "X4 - R$" + h.X4;
+                break;
+            default:
+                alert("Escolha um número válido");
+                break;
+        }
+
+        let acompanhamento = Number(prompt("Escolha um acompanhamento:\n [1] = Nuggets - R$3,69\n [2] = Fritas - R$1,58\n"));
+
+        while (acompanhamento > 2 || acompanhamento < 1) {
+            alert("Digite um número válido");
+            acompanhamento = Number(prompt("Escolha um acompanhamento:\n [1] = Nuggets - R$3,69\n [2] = Fritas - R$1,58\n"));
+        }
+
+        switch (acompanhamento) {
+            case 1:
+                valor += a.Nuggets;
+                pedidoAcompanhamento = "Nuggets - R$" + a.Nuggets;
+                break;
+            case 2:
+                valor += a.Fritas;
+                pedidoAcompanhamento = "Fritas - R$" + a.Fritas;
+                break;
+            default:
+                alert("Escolha um número válido");
+                break;
+        }
+
+        let bebida = Number(prompt("Escolha uma bebida:\n [1] = Coca-Cola - R$1,48\n [2] = Fanta - R$2,58\n [3] = Água - R$0,98\n"));
+
+        while (bebida > 3 || bebida < 1) {
+            alert("Digite um número válido");
+            bebida = Number(prompt("Escolha uma bebida:\n [1] = Coca-Cola - R$1,48\n [2] = Fanta - R$2,58\n [3] = Água - R$0,98\n"));
+        }
+
+        switch (bebida) {
+            case 1:
+                valor += b.CocaCola;
+                pedidoBebida = "Coca-Cola - R$" + b.CocaCola;
+                break;
+            case 2:
+                valor += b.Fanta;
+                pedidoBebida = "Fanta - R$" + b.Fanta;
+                break;
+            case 3:
+                valor += b.Agua;
+                pedidoBebida = "Água - R$" + b.Agua;
+                break;
+            default:
+                alert("Escolha um número válido");
+                break;
+        }
+
+        document.getElementById("lanche").innerHTML = pedidoLanche;
+        document.getElementById("acompanhamento").innerHTML = pedidoAcompanhamento;
+        document.getElementById("bebida").innerHTML = pedidoBebida;
+        document.getElementById("total").innerHTML = "R$" + valor.toFixed(2);
+    </script>
+</body>
+</html>
